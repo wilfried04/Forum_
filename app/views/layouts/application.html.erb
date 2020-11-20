@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Forum</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <ul>
+          <%# <li clase="left"><%= link_to "Profile", user_path(current_user.id) %></li>
+          <%# <li clase="left"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+          <li clase="right"><%= link_to "Home", topics_path %></li>
+          <li clase="right"><%= link_to "New", new_topic_path %></li>
+      </ul>
+       <div class="">
+      <% flash.each do |key, value|%>
+        <%= content_tag(:div,value,class:"alert alert-#{key}")%>
+        <%end%>
+    <%= yield %>
+  </body>
+</html>

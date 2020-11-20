@@ -1,0 +1,15 @@
+<div class="container">
+<h3>Confirm your Topic</h3>
+<%= form_with(model: @topic, url:topics_path,local: true) do |form| %>
+  <%= form.hidden_field :content %>
+  <%= image_tag(@topic.image.url) if @topic.image && @topic.image.url%>
+  <%= form.hidden_field :image_cache,:class=>"img-fluid rounded mx-auto d-block",
+                                    :alt=>"Responsive image" %>
+  <p>Content :<%= @topic.content %> </p>
+  <%= form.submit "Confirm" %>
+<% end %>
+<%= form_with(model:@feed, url:new_blog_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "Return", name: "back" %>
+<% end %>
+</div
