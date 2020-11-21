@@ -1,12 +1,11 @@
 class TopicsController < ApplicationController
      # collbacks
+    before_action :authenticate_user!, only:%i[new edit destroy]
     before_action :set_topic, only: [:show, :edit, :update, :destroy]
-    before_action :set_topic, only: %i[show edit update destroy]
-    #before_action :login_check, only: %i[new edit destroy]
     before_action :user_check, only: %i[edit destroy]
-    #before_action :topic_check, only: %i[new create]
+
     def index
-     @topic= Topic.all
+        @topic= Topic.all
     end
 
     def new
@@ -28,8 +27,11 @@ class TopicsController < ApplicationController
     end
 
     def show
+      @comments = @topic.comments
+      @comment = @topic.comments.build
 
     end
+
     def update
       if @topic.update(topic_params)
       flash[:success] = 'Post successfully update'
@@ -50,20 +52,13 @@ class TopicsController < ApplicationController
     def set_topic
       @topic=Topic.find(params[:id])
     end
-    # vérifier que l'utilisateur connecté est le propriétaire
     def user_check
-      redirect_to topics_path, 
-      notice:('access deny') 
-      unless current_user == @topic.user_id
-      end
+     unless current_user.id == @topic.user.id 
+      flash[:success] = 'acces deny'
+     end
     end
+    # vérifier que l'utilisateur connecté est le propriétaire
 
- 
     # empêcher à l'utilisateur de publier ou éditer ou supprimer sans être connecter ou s'il n'est pas propiétaire vérifier que l'utilisateur est connecté
-    def login_check
-      redirect_to new_user_registration_path, 
-      notice:('you are not login, please login or create new accompt') 
-      unless user_signed_in?
-      end
-    end
+    
 end
