@@ -1,8 +1,10 @@
 class TopicsController < ApplicationController
      # collbacks
     before_action :authenticate_user!, only:%i[new edit destroy]
+    before_action :login_check, only: %i[new edit destroy]
     before_action :set_topic, only: [:show, :edit, :update, :destroy]
     before_action :user_check, only: %i[edit destroy]
+    before_action :topic_check, only: %i[new create]
 
     def index
         @topic= Topic.all
@@ -27,6 +29,7 @@ class TopicsController < ApplicationController
     end
 
     def show
+      @favorite = @topic.favorites.find_by(topic_id: @topic.id)
       @comments = @topic.comments
       @comment = @topic.comments.build
     end

@@ -14,26 +14,25 @@ class CommentsController < ApplicationController
     end
   
     def edit
-      @comment = @topic.comments.find(params[:id])
-      respond_to do |format|
-        flash.now[:notice] = 'modifier le commentaires'
-        format.js { render :edit }
-      end
-    end
-  
-    def update
-      @comment = @topic.comments.find(params[:id])
-      respond_to do |format|
-        if @comment.update(comment_params)
-          flash.now[:notice] = 'Commentaire mis a jour'
-          format.js { render :index }
-        else
-          flash.now[:notice] = 'commentaire non mis à jour'
-          format.js { render :edit_error }
+        @comment = @topic.comments.find(params[:id])
+        respond_to do |format|
+          format.js { render :edit }
         end
       end
-    end
-  
+    
+      def update
+        @comment = @topic.comments.find(params[:id])
+        respond_to do |format|
+          if @comment.update(comment_params)
+            flash.now[:notice] = 'Commentaire mis a jour'
+            format.js { render :index }
+          else
+            flash.now[:notice] = 'commentaire non mis à jour'
+            format.js { render :edit_error }
+          end
+        end
+      end
+    
     def destroy
       @comment = Comment.find(params[:id])
       @comment.destroy
