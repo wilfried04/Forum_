@@ -1,18 +1,21 @@
 
+
 <% @topic.each do |topic| %>
-        <p><%=topic.title%></p>
-        <p><%=topic.content%></p>
-        <p><%=topic.category%></p>
-    </tr>
-     <td><%=link_to "Show",topic_path(topic.id)%></td>
-    <%if current_user && current_user== topic.user%>
-        <tr>
-            <td><%=link_to "Destroy",topic_path(topic.id),method: :delete, data: { confirm: 'Are you sure?'} %></td>
-            <td><%=link_to "Edit", edit_topic_path(topic.id) %></td>
-        
-        </tr>
-    <% else %>
-<% end %>
-    </tbody>
-    </table>
+  <div class="card">
+    <div class="card-header">
+      <p><strong>Subjet </strong> : <%=topic.title%> <br>
+      <strong>Catégory</strong> : <%=topic.category%><br>
+      Post by : <strong><%= topic.user.email%></strong>
+    </p>
+    </div>
+    <div class="card-body">
+      <p><%=topic.content%></p>
+  <%=link_to "comment",topic_path(topic.id),class:"badge badge-warning"%>
+   <%if current_user && current_user== topic.user%>
+    <%=link_to "Edit", edit_topic_path(topic.id),class:"badge badge-info" %>
+    <%=link_to "Destroy",topic_path(topic.id),method: :delete, data: { confirm: 'Are you sure?'},class:"badge badge-light" %>
+  <% end %>
+    </div>
+  </div>
+  <br>
 <% end %>

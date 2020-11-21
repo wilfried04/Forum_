@@ -4,42 +4,42 @@
     <title>Forum</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-    <%#  %>
-      <p class="navbar-text float-right">
-          <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
-            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-          <% end %>   
-      </p>
-      <%#  %>
-       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          <a class="nav-link" href="/category">....</a>
-        </li>
-      <%#  %>
-      </ul>
-
-  <body>
-
-        <ul>
-          <li clase="right"><%= link_to "Home", topics_path %></li>
-          <li clase="right"><%= link_to "New", new_topic_path %></li>
-      </ul>
-       <div class="">
-      <% flash.each do |key, value|%>
-        <%= content_tag(:div,value,class:"alert alert-#{key}")%>
-        <%end%>
-
-
-        
-    <%= yield %>
+  <body id="page-top">
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+          <div class="container">
+              <p class="navbar-brand js-scroll-trigger">DF_FORUM</p>
+              <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  Menu
+                  <i class="fas fa-bars"></i>
+              </button>
+              <% if user_signed_in? %>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item mx-0 mx-lg-1"><%= link_to 'Home', root_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %></li>
+                      <li class="nav-item mx-0 mx-lg-1"><%= link_to 'Add forum', new_topic_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %></li>
+                      <li class="nav-item mx-0 mx-lg-1"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%></li>
+                  </ul>
+              </div>
+            <% else %>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><%= link_to 'Home', root_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %></li>
+                    <li class="nav-item mx-0 mx-lg-1"><%= link_to "Sign up", new_user_registration_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%> </li>
+                    <li class="nav-item mx-0 mx-lg-1"><%= link_to "Login", new_user_session_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%></li>
+                </ul>
+            </div>
+          <% end %>
+          </div>
+      </nav>
+    <div class="container yield">
+      <div class="flash">
+         <% flash.each do |key, value|%>
+           <%= content_tag(:div,value,class:"alert alert-#{key}")%>
+           <%end%>
+       <%= yield %>
+    </div>
   </body>
 </html>
