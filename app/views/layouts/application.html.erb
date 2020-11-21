@@ -10,9 +10,8 @@
   </head>
 
   <body>
-    <ul>
-          <%# <li clase="left"><%= link_to "Profile", user_path(current_user.id) %></li>
-          <%# <li clase="left"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+
+        <ul>
           <li clase="right"><%= link_to "Home", topics_path %></li>
           <li clase="right"><%= link_to "New", new_topic_path %></li>
       </ul>
@@ -20,6 +19,13 @@
       <% flash.each do |key, value|%>
         <%= content_tag(:div,value,class:"alert alert-#{key}")%>
         <%end%>
+
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
     <%= yield %>
   </body>
 </html>

@@ -10,9 +10,11 @@ class TopicsController < ApplicationController
 
     def create
         @topic = Topic.new(topic_params)
+        @topic.user_id = current_user.id
         if @topic.save
             flash[:success] = 'Post successfully create'
             redirect_to topics_path
+            ContactMailer.contact_mail(@topic).deliver
         end
     end
 
