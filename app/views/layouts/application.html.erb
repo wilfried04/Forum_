@@ -19,13 +19,7 @@
             <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
           <% end %>   
       </p>
-      <%#  %>
-       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          <a class="nav-link" href="/category">....</a>
-        </li>
-      <%#  %>
-      </ul>
+
 
   <body>
 
@@ -38,7 +32,10 @@
         <%= content_tag(:div,value,class:"alert alert-#{key}")%>
         <%end%>
 
-
+      <% if current_user %>
+          <%= link_to "favorite",   favorite_topic_path(@topic, type: "favorite"), method: :put %>
+          <%= link_to "unfavorite", favorite_topic_path(@topic, type: "unfavorite"), method: :put %>
+      <% end %>
         
     <%= yield %>
   </body>

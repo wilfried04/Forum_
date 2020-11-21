@@ -6,5 +6,6 @@ class Topic < ApplicationRecord
     validates :category, presence:true
     enum category: %i[Actualité Loisir Sport Mode Tourisme Politique Voyage Sexe Cuisine]
     # comment fonction
+    has_many :favorites, dependent: :destroy
     has_many :comments, dependent: :destroy
 end

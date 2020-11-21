@@ -5,6 +5,8 @@ class TopicsController < ApplicationController
     before_action :set_topic, only: [:show, :edit, :update, :destroy]
     before_action :user_check, only: %i[edit destroy]
     before_action :topic_check, only: %i[new create]
+    # has_many :favorite_users, through: :favorites, source: :user
+    # belongs_to :user
 
     def index
         @topic= Topic.all
@@ -29,6 +31,7 @@ class TopicsController < ApplicationController
     end
 
     def show
+      @topic = Topic.find(params[:id])
       @favorite = @topic.favorites.find_by(topic_id: @topic.id)
       @comments = @topic.comments
       @comment = @topic.comments.build
