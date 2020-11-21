@@ -12,8 +12,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
-
- gem 'letter_opener_web' 
+gem 'image_processing', '~> 1.2'
+gem 'letter_opener_web' 
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
