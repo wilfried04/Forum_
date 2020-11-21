@@ -24,7 +24,8 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'ckeditor_rails'
 gem 'friendly_id'
-
+gem 'haml'
+gem 'simple_form'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
