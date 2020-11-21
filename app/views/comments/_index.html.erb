@@ -2,9 +2,6 @@
       <% if comment.id.present? %>
       <div class="comment-comment" id ="this_comment_<%= comment.id %>"></div>
         <div class="card">
-           <div class="card-header">
-             <strong><%= image_tag comment.user.avatar_thumbnail,style: 'height:5%;width:5%;'%> <%= link_to "#{comment.user.name }", user_path(comment.user.id) %></strong><br>
-            </div>
             <div class="card-body">
             <p><%= comment.comment %></p>
               <% if user_signed_in? %>
@@ -13,7 +10,6 @@
                   |<small><%= link_to "delete", topic_comment_path(comment.topic_id, comment.id), method: :delete, remote: true %></small>
                  <% end %>
                 <% end %>
-          </div>
             <% end %>
           <% end %>
         </div>

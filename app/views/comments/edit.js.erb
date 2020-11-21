@@ -1,1 +1,1 @@
-$("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'comments/edit', startup: @topic, comment: @comment %>");
+$("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'comments/edit', topic: @topic, comment: @comment %>");

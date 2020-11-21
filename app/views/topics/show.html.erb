@@ -1,13 +1,19 @@
-
-
-<div class="container">
-<table>
-  <tbody>
-    <tr>
-    <td><%=@topic.title%></td>
-    <td><%=@topic.content %></td>
-    <td><%=@topic.category %></td>
-    </tr>
-  </tbody>
-</table>
-</div>
+       
+            <%= @topic.title %> <br>
+            <%= @topic.content %><br>
+            <%= @topic.category %><br>
+       
+       <hr>
+        <% if user_signed_in? && current_user.id == @topic.user_id %>
+            <%= link_to 'edit Statut', edit_topic_path(@topic.id),class:"btn btn-sm btn-info" %>
+            <%= link_to 'Delete topic', topic_path(@topic.id), method: :delete, data: { confirm: 'Are you sure?'} %>
+        <% end %>
+        <%# topic Commentfunction %>
+        <hr>
+        <div class="text-center">
+           <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
+        </div>
+       <div id="comments_area">
+           <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
+        </div>
+    </div>

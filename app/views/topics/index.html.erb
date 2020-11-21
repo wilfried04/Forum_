@@ -5,12 +5,12 @@
         <p><%=topic.category%></p>
     </tr>
      <td><%=link_to "Show",topic_path(topic.id)%></td>
-<%if current_user && current_user== topic.user%>
-    <tr>
-        <td><%=link_to "Destroy",topic_path(topic.id),method: :delete, data: { confirm: 'Are you sure?'} %></td>
-        <td><%=link_to "Edit", edit_topic_path(topic.id) %></td>
-       
-    </tr>
+    <%if current_user && current_user== topic.user%>
+        <tr>
+            <td><%=link_to "Destroy",topic_path(topic.id),method: :delete, data: { confirm: 'Are you sure?'} %></td>
+            <td><%=link_to "Edit", edit_topic_path(topic.id) %></td>
+        
+        </tr>
     <% else %>
 <% end %>
     </tbody>

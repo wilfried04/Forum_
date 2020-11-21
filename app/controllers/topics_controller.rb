@@ -29,7 +29,6 @@ class TopicsController < ApplicationController
     def show
       @comments = @topic.comments
       @comment = @topic.comments.build
-
     end
 
     def update
