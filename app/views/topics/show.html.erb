@@ -1,18 +1,26 @@
+ Post by : <strong><%= @topic.user.name%></strong></p>
 <div class="card">
   <div class="card-header">
-
-    <p>
-      Topic : <strong><%= @topic.title %></strong><br>
-      category: <strong><%= @topic.category %></strong> <br>
-      Post by : <strong><%= @topic.user.email%></strong>
-    </p>
-    
+    <p>Topic : <strong><%= @topic.title %></strong><br>
+       category: <strong><%= @topic.category %></strong> <br>
+       comments :<span class="badge badge-info"><%=@topic.comments.count%></span>
+       Likes : <span class="badge badge-danger"><%=@topic.favorites.count%></span>
   </div>
   <div class="card-body">
     <p> <%= @topic.content %></p>
-  <% if user_signed_in? && current_user.id == @topic.user_id %>
-   <%= link_to 'edit topic', edit_topic_path(@topic.id),class:"badge badge-info" %>
-   <%= link_to 'Delete topic', topic_path(@topic.id), method: :delete, data: { confirm: 'Are you sure?'},class:"badge badge-danger"%>
+    <% if user_signed_in? && current_user.id == @topic.user_id %>
+     <%= link_to 'edit topic', edit_topic_path(@topic.id),class:"badge badge-info" %>
+     <%= link_to 'Delete topic', topic_path(@topic.id), method: :delete, data: { confirm: 'Are you sure?'},class:"badge badge-danger"%>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <% unless @topic.user_id == current_user.id %>
+        <% if current_user.favorites.pluck(:topic_id).include? @topic.id%>
+          <%= link_to 'unlike', favorite_path(@favorite.id), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to 'Like', favorites_path(topic_id: @topic.id), method: :post, class: 'btn btn-primary' %>
+       <% end %>
+    <% end %>
   <% end %>
   </div>
 </div>

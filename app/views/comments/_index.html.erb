@@ -3,7 +3,8 @@
       <div class="comment-comment" id ="this_comment_<%= comment.id %>"></div>
       <div class="card">
         <div class="card-header">
-             <strong><%= link_to "#{comment.user.email }", user_path(comment.user.id) %></strong> comment<br>
+             <strong><%= image_tag (comment.user.avatar_thumbnail), class:"navbar-brand" , style:'height:50px;width:50px;border-radius:100px;'%>
+                    <%= link_to "#{comment.user.name }", user_path(comment.user.id) %></strong> comment<br>
         </div>
         <div class="card-body">
         <p><%= comment.comment %></p>

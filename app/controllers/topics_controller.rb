@@ -7,8 +7,31 @@ class TopicsController < ApplicationController
     # belongs_to :user
 
     def index
+        if params[:title]
+          @topic= Topic.where(["title LIKE ?", "%#{params[:title]}%"])
+       elsif params[:sort_my_topic]
+         @topic= current_user.topic
+       elsif params[:sort_actuality]
+         @topic= Topic.where(["category=0"])
+       elsif params[:sort_losir]
+         @topic= Topic.where(["category=1"])
+       elsif params[:sort_sport]
+         @topic= Topic.where(["category=2"])
+       elsif params[:sort_mode]
+         @topic= Topic.where(["category=3"])
+       elsif params[:sort_tourism]
+         @topic= Topic.where(["category=4"])
+       elsif params[:sort_politique]
+         @topic= Topic.where(["category=5"])
+       elsif params[:sort_voyage]
+         @topic= Topic.where(["category=6"])
+       elsif params[:sort_sexe]
+         @topic= Topic.where(["category=7"])
+       elsif params[:sort_cuisine]
+         @topic= Topic.where(["category=8"])
+       else
         @topic= Topic.all
-        
+      end
     end
 
     def new
@@ -18,7 +41,7 @@ class TopicsController < ApplicationController
     def create
         @topic = Topic.new(topic_params)
         # id user a l'enregistrement
-        @topic.user_id = current_user.id 
+        @topic.user_id = current_user.id
         if @topic.save
             flash[:success] = 'Post successfully create'
             redirect_to topics_path
@@ -30,7 +53,7 @@ class TopicsController < ApplicationController
     end
 
     def show
-      @favorite = current_user.favorites.find_by(topic_id:@topic_id)
+      @favorite = @topic.favorites.find_by(topic_id: @topic.id)
       @comments = @topic.comments
       @comment = @topic.comments.build
     end
@@ -53,15 +76,15 @@ class TopicsController < ApplicationController
       params.require(:topic).permit(:title,:content,:category)
     end
     def set_topic
-      @topic=Topic.find(params[:id]) 
+      @topic=Topic.find(params[:id])
     end
     def user_check
-     unless current_user.id == @topic.user.id 
+     unless current_user.id == @topic.user.id
       flash[:success] = 'acces deny'
      end
     end
     # vérifier que l'utilisateur connecté est le propriétaire
 
     # empêcher à l'utilisateur de publier ou éditer ou supprimer sans être connecter ou s'il n'est pas propiétaire vérifier que l'utilisateur est connecté
-    
+
 end

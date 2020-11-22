@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :topic, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # Avatar
   def avatar_thumbnail
