@@ -1,0 +1,31 @@
+    <div class="container">
+      <%= image_tag (@user.avatar_thumbnail), style: 'height:150px;width:150px;'%>
+      <div class="row">
+        <div class="col-lg-9">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Name </strong>:<%= @user.name %></td>
+              </tr>
+              <tr>
+                <td><strong>Email </strong><%= @user.email %></td>
+              </tr>
+            </tbody>
+          </table>
+            <% if user_signed_in? %>
+              <% if current_user.id == @user.id  %>
+                <%= link_to 'edit user params', edit_user_registration_path(:id),class:"btn btn-sm btn-info" %>
+             <% end %>
+            <% end %>
+          </div>
+          <br>
+          <div class="col-lg-3">
+            <h6>DASHBOARD</h6>
+            <ul>
+              <li>Topics posted: <span class="badge badge-warning"><%= @user.topic.count %></span> </li>
+              <li>Comments Posted : <span class="badge badge-info"><%= @user.comments.count %></span> </li>
+              <li>Topic Favorites : <span class="badge badge-danger"><%= @user.favorites.count%></span> </li>
+            </ul>
+          </div>
+        </div>
+    </div>
