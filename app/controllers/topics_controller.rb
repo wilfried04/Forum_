@@ -1,15 +1,14 @@
 class TopicsController < ApplicationController
      # collbacks
     before_action :authenticate_user!, only:%i[new edit destroy]
-    before_action :login_check, only: %i[new edit destroy]
     before_action :set_topic, only: [:show, :edit, :update, :destroy]
     before_action :user_check, only: %i[edit destroy]
-    before_action :topic_check, only: %i[new create]
     # has_many :favorite_users, through: :favorites, source: :user
     # belongs_to :user
 
     def index
         @topic= Topic.all
+        
     end
 
     def new
@@ -31,8 +30,7 @@ class TopicsController < ApplicationController
     end
 
     def show
-      @topic = Topic.find(params[:id])
-      @favorite = @topic.favorites.find_by(topic_id: @topic.id)
+      @favorite = current_user.favorites.find_by(topic_id:@topic_id)
       @comments = @topic.comments
       @comment = @topic.comments.build
     end
@@ -55,7 +53,7 @@ class TopicsController < ApplicationController
       params.require(:topic).permit(:title,:content,:category)
     end
     def set_topic
-      @topic=Topic.find(params[:id])
+      @topic=Topic.find(params[:id]) 
     end
     def user_check
      unless current_user.id == @topic.user.id 

@@ -13,6 +13,14 @@
         </tr>
     <% else %>
 <% end %>
+<%#  %>
+    <% if user_signed_in? %>
+            <% unless @topic.user_id == current.user.id %> 
+                <% if @favorite.present? %> --Vous êtes déjà contributeur de cette topic -- 
+            <% else %> <%= link_to 'CONTRIBUER', favorites_path(topic_id: @topic.id)%> 
+            <% end %> 
+        <% end %> 
+    <% end %>
 
     </tbody>
     </table>

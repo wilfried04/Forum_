@@ -32,10 +32,7 @@
         <%= content_tag(:div,value,class:"alert alert-#{key}")%>
         <%end%>
 
-      <% if current_user %>
-          <%= link_to "favorite",   favorite_topic_path(@topic, type: "favorite"), method: :put %>
-          <%= link_to "unfavorite", favorite_topic_path(@topic, type: "unfavorite"), method: :put %>
-      <% end %>
+
         
     <%= yield %>
   </body>
