@@ -14,8 +14,7 @@
 <% end %>
   <div class="field">
     <%= form_with(model:@topic,local: true) do |form| %>
-        <%= form.text_field :title,:class=>"form-control",:id=>"exampleInputEmail1" %>
-        <%= form.text_area :content,:class=>"form-control",:id=>"exampleInputEmail1" %>
+    Choose one category
         <%= form.select(:category, {Actualité:"Actualité",
                                    Loisir:"Loisir",
                                    Sport:"Sport",
@@ -24,10 +23,12 @@
                                    Politique:"Politique",
                                    Voyage:"Voyage",
                                    Sexe:"Sexe",
-                                   Cuisine:"Cuisine"}) %>
-
-
-        <div class="actions">
+                                   Cuisine:"Cuisine"})%><br>
+    Topic title :
+        <%= form.text_field :title,:class=>"form-control",:id=>"exampleInputEmail1" %><br>
+    Topic Content :
+        <%= form.text_area :content,:class=>"form-control",:id=>"topic_content" %><br>
+  <div class="actions">
           <%= form.submit "Post",:class=>"btn btn-primary"%>
         </div>
     <% end %>

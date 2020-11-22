@@ -1,15 +1,20 @@
   <% comments.each do |comment| %>
       <% if comment.id.present? %>
-      <div class="comment-comment" id ="this_comment_id<%= comment.id %>"></div>
-        <div class="card">
-            <div class="card-body">
-            <p><%= comment.comment %></p>
-              <% if user_signed_in? %>
-                 <% if comment.user_id == current_user.id %>
-                  <small><%= link_to "edit", edit_topic_comment_path(@topic, comment), remote: true %></small>
-                  |<small><%= link_to "delete", topic_comment_path(comment.topic_id, comment.id), method: :delete, remote: true %></small>
-                 <% end %>
-                <% end %>
-            <% end %>
-          <% end %>
+      <div class="comment-comment" id ="this_comment_<%= comment.id %>"></div>
+      <div class="card">
+        <div class="card-header">
+             <strong><%= link_to "#{comment.user.email }", user_path(comment.user.id) %></strong> comment<br>
         </div>
+        <div class="card-body">
+        <p><%= comment.comment %></p>
+          <% if user_signed_in? %>
+             <% if comment.user_id == current_user.id %>
+              <small><%= link_to "edit comment", edit_topic_comment_path(@topic, comment), remote: true %></small>
+              | <small><%= link_to "delete comment", topic_comment_path(comment.topic_id, comment.id), method: :delete, remote: true %></small>
+             <% end %>
+
+          <% end %>
+      </div>
+      </div>
+        <% end %>
+      <% end %>
