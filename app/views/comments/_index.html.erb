@@ -12,6 +12,7 @@
               <small><%= link_to "edit comment", edit_topic_comment_path(@topic, comment), remote: true %></small>
               | <small><%= link_to "delete comment", topic_comment_path(comment.topic_id, comment.id), method: :delete, remote: true %></small>
              <% end %>
+
           <% end %>
       </div>
       </div>
