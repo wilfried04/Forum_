@@ -14,6 +14,6 @@ class FavoritesController < ApplicationController
     end 
 
     def show
-    @favorite = current_user.favorites.all if logged_in?
+     @favorite = current_user.favorites.all if logged_in?
     end
 end
