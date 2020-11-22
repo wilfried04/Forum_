@@ -1,0 +1,36 @@
+
+
+<%if @favorite.present?%>
+    <% @favorite.each do |favorite| %>
+    <div class="card">
+        <div class="card-header">
+        <p><strong>Subjet </strong> : <%=topic.title%> <br>
+        <strong>Catégory</strong> : <%=topic.category%><br>
+        Post by : <strong><%= topic.user.email%></strong>
+        </p>
+        </div>
+
+        <div class="card-body">
+        <p><%=topic.content%></p>
+            <%=link_to "comment",topic_path(topic.id),class:"badge badge-warning"%>
+            
+            <%if current_user && current_user== topic.user%>
+                <%=link_to "Edit", edit_topic_path(topic.id),class:"badge badge-info" %>
+                <%=link_to "Destroy",topic_path(topic.id),method: :delete, data: { confirm: 'Are you sure?'},class:"badge badge-light" %>
+            <% end %>
+        </div>
+        <div>
+    <%# Favorite views %>
+        <% if user_signed_in? %> 
+            <% unless topic.user_id == current_user.id %> 
+            <% if @favorite.present? %>
+                --Vous êtes déjà un -- 
+            <% else %> 
+                <%= link_to 'Cool', favorites_path(topic_id: topic.id)%> 
+            <% end %> 
+        <% end %> 
+        <% end %>
+    </div>c
+
+    <% end %>
+<% end %>   

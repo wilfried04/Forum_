@@ -1,8 +1,12 @@
 <div class="card">
   <div class="card-header">
-    <p>Topic : <strong><%= @topic.title %></strong><br>
-       category: <strong><%= @topic.category %></strong> <br>
-       Post by : <strong><%= @topic.user.email%></strong></p>
+
+    <p>
+      Topic : <strong><%= @topic.title %></strong><br>
+      category: <strong><%= @topic.category %></strong> <br>
+      Post by : <strong><%= @topic.user.email%></strong>
+    </p>
+    
   </div>
   <div class="card-body">
     <p> <%= @topic.content %></p>
