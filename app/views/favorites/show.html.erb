@@ -1,0 +1,62 @@
+<% if logged_in?%>
+<div class="container">
+  <div class="row">  
+      <div class="col-12">
+        <div class="container insta-post">
+          <table class="table" style="overflow:hidden;"> 
+          <%if @favorite.present?%>
+            <% @favorite.each do |favorite|%>
+              <thead class="thead-dark">
+                <tr>
+                  <th>User Name</th>
+                  <th>Image</th>  
+                  <th>Content</th>  
+                  <%# <th>Action</th> %>
+                </tr> 
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <%= favorite.topic.user.name %>
+                </td> 
+                <td>
+                  <%= image_tag favorite.topic.image_url, class: "profile-pic" %>
+                </td>
+                <td>
+                  <%= favorite.topic.content %>
+                </td>
+                <td>
+                  <div class="col-6">
+                    <% if @favorite.present? %>
+                      <%= link_to 'Delete Favorite', favorite_path(id: @favorite.ids), method: :delete, class: 'btn btn-danger' %>
+                    <% else %>
+                      <%= link_to 'Add Favorite', favorites_path(topic_id: @topic.id), method: :post, class: 'btn btn-secondary' %>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+              </tbody> 
+            <% end %>
+          <%else%>
+            <p>You aren't added favorite  go to post page and add.</p>
+          <%= link_to  "See The Post List", topics_path, class: "btn btn-primary" %>
+          <%end%>   
+          </table>
+        </div> 
+      </div>
+<%else%>
+  <div class="row">
+    <div class="col-6">
+      Please Sign In :<span class="badge badge-pill badge-info">
+        <%= link_to  "Log in", new_session_path %></span>
+    </div>
+    <div class="col-6">
+      Please Sign Up :<span class="badge badge-pill badge-info">
+        <%= link_to  "Sign Up", new_user_path %></span>
+    </div>
+  </div>
+<%end%>
+        </div>
+      </div>
+  </div>
+</div>

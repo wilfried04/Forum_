@@ -8,6 +8,7 @@ class FavoritesController < ApplicationController
     def destroy
         favorite = current_user.favorites.find_by(id: params[:id]).destroy
         flash[:success] = "#{favorite.topic.title} n'est plus dans vos favorites"
+        redirect_to topics_url, notice: "The #{favorite.topic.user.name}'s  post is removed from your favorites"
     end
 
     def index

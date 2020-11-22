@@ -1,5 +1,4 @@
 <%@favorite.each do |favorite|%>
-
     <p>
       <strong>Subject </strong> : <%=link_to "#{@topic.find(favorite.topic_id).title}", topic_path(favorite.topic_id)  %> <br>
         posted by <strong><%= @topic.find(favorite.topic_id).user.name %></strong> at <strong><%= @topic.find(favorite.topic_id).created_at %></strong>

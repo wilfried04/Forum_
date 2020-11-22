@@ -13,22 +13,19 @@ Forum is an application of communication between friends, this application has t
  - [ ] login function
  - [ ] function to register a new user
     - [ ] requires email and a password
-     - [ ] connexion with google or facebook (oauth fonction)
-    - [ ] summary of their information (name, contact, address, logo)
+     - [ ] connexion with google and facebook (oauth fonction)
+        - [ ] connexion with google
+        - [ ] connexion with facebook
     - [ ] link to visit the complete information page 
 - [ ] function to edit information pages
 - [ ] function to delete information pages
 - [ ] function to following another user (partner)
-- [ ] message function between partners
-- [ ] search fonction
-- [ ] sort function
+- [ ] search fonction by topic-category
+- [ ]  Function Admin (All Users roles and All topic)
 - [ ] comments function
-- [ ] likes function
 - [ ] favorites function
-- [ ] frienship function
 - [ ] topics function
-- [ ] limits function
-- [ ] subscribes function
+
 
 * ## Catalog design,Table_Definition,Screen transition diagram,,Wire frame
 
