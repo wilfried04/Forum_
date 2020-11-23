@@ -1,2 +1,13 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+
+        <% @user.each do |user| %>
+          <% unless user == current_user %>
+            <div class="card ">
+            <p>
+                <%= image_tag (user.avatar_thumbnail), style: 'height:30px;width:30px;'%>
+                <%= link_to "#{user.name}", user %><br>
+                <strong>email: </strong> <%= user.email %><br>
+                <%= link_to "#{user.name}'s summary", user %><br>
+             </p>
+          </div>
+          <% end %>
+        <% end %>

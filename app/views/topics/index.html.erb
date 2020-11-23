@@ -5,39 +5,39 @@
   <strong>Sort by categories : </strong>
   <button type="button" class="btn-black">
     <%= link_to 'Actualité', topics_path(sort_actuality: "true") %>
-    <span class="badge badge-info"><%= @topic.where("category=0").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=0").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Loisir', topics_path(sort_losir: "true") %>
-    <span class="badge badge-info"><%= @topic.where("category=1").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=1").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Sport', topics_path(sort_sport: "true") %>
-    <span class="badge badge-info"><%= @topic.where("category=2").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=2").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Mode', topics_path(sort_mode: "true")%>
-    <span class="badge badge-info"><%= @topic.where("category=3").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=3").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Tourisme', topics_path(sort_tourism: "true")%>
-    <span class="badge badge-info"><%= @topic.where("category=4").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=4").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Politique', topics_path(sort_politique: "true") %>
-    <span class="badge badge-info"><%= @topic.where("category=5").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=5").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Voyage', topics_path(sort_voyage: "true") %>
-    <span class="badge badge-info"><%= @topic.where("category=6").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=6").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Sexe', topics_path(sort_sexe: "true") %>
-    <span class="badge badge-info"><%= @topic.where("category=7").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=7").count%></span>
   </button>
   <button type="button" class="btn-black">
     <%= link_to 'Cuisine', topics_path(sort_cuisine: "true") %>
-    <span class="badge badge-info"><%= @topic.where("category=8").count%></span>
+    <span class="badge badge-info"><%= Topic.where("category=8").count%></span>
   </button>
 </div>
 <hr>
