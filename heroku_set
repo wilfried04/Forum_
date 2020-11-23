@@ -1,0 +1,9 @@
+
+#google
+heroku config:set GOOGLE_APP_ID=534436544324-5e3tui09ua7n85anndik82e8gioicual.apps.googleusercontent.com
+heroku config:set GOOGLE_APP_SECRET=hsXFRaqtPLHCU8iwtnCTESHS
+
+
+#facebook
+heroku config:set FACEBOOK_KEY=407185333611761
+heroku config:set FACEBOOK_SECRET=f2522dd9bb1968044cb300369213dbc0
