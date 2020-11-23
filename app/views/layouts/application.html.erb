@@ -8,7 +8,7 @@
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application'%>
     
   </head>
   <body id="page-top">
@@ -98,3 +98,5 @@
  <%= render 'topics/footer' %>
  </div>
 </html>
+
+<%= javascript_pack_tag 'application' %>
