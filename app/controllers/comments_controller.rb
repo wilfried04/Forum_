@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
+
+    before_action :authenticate_user!, only: %i[create edit update destroy]
     before_action :set_topic, only: %i[create edit update destroy]
-    before_action :login_check, only: %i[create edit destroy]
+
     def create
       @comment = @topic.comments.build(comment_params)
       @comment.user_id = current_user.id
