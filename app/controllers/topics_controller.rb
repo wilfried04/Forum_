@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
      # collbacks
-    before_action :authenticate_user!, only:%i[new edit destroy]
+    before_action :authenticate_user!, only: %i[new edit destroy]
     before_action :set_topic, only: [:show, :edit, :update, :destroy]
     before_action :user_check, only: %i[edit destroy]
     # has_many :favorite_users, through: :favorites, source: :user
