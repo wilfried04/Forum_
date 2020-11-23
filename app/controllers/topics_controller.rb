@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
         # id user a l'enregistrement
         @topic.user_id = current_user.id
         if @topic.save
-            flash[:success] = 'Post successfully create'
+            flash[:success] = I18n.t('topic.create')
             redirect_to topics_path
         end
     end
@@ -60,7 +60,7 @@ class TopicsController < ApplicationController
 
     def update
       if @topic.update(topic_params)
-      flash[:success] = 'Post successfully update'
+      flash[:success] =  I18n.t('topic.update')
       redirect_to topics_path
     else
       render :edit
@@ -68,7 +68,7 @@ class TopicsController < ApplicationController
     end
     def destroy
       @topic.destroy
-      flash[:success] = 'Post successfully destroy'
+      flash[:success] = I18n.t('topic.destroy')
       redirect_to topics_path
     end
     private
@@ -80,7 +80,7 @@ class TopicsController < ApplicationController
     end
     def user_check
      unless current_user.id == @topic.user.id
-      flash[:success] = 'acces deny'
+      flash[:success] = I18n.t('topic.user_check')
      end
     end
     # vérifier que l'utilisateur connecté est le propriétaire

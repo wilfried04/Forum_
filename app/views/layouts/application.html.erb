@@ -4,11 +4,9 @@
     <title>Forum</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-    
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -23,7 +21,8 @@
               <% if user_signed_in? %>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                   <ul class="navbar-nav ml-auto">
-                      <li class="nav-item mx-0 mx-lg-1"><%= link_to 'Home', root_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %></li>
+                     <li class="nav-item mx-0 mx-lg-1"><%= link_to 'Home', root_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %></li>
+                      <li class="nav-item mx-0 mx-lg-1"><%= link_to 'All user', users_path, :class => 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' %></li>
                       <li type="button" class="btn btn-outline-info my-2 my-sm-0 nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger nav-item mx-0 mx-lg-1" data-toggle="modal" data-target="#exampleModal"">SEARCH TOPIC BY NAME</li>
                       <li class="nav-item mx-0 mx-lg-1"><%= link_to "logout", destroy_user_session_path, method: :delete,class:" btn btn-outline-info my-2 my-sm-0 nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
                   </ul>
@@ -60,7 +59,7 @@
                   <%= link_to 'My favorites topics',favorites_path,:class => 'nav-link' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Add forum', new_topic_path,:class => 'nav-link' %>
+                  <%= link_to 'Add topic', new_topic_path,:class => 'btn btn-outline-warning nav-link' %>
                 </li>
               </ul>
             </div>
