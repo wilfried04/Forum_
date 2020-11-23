@@ -4,11 +4,13 @@
     <title>Forum</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application'%>
-    
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
   <body id="page-top">
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
