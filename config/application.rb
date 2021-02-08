@@ -12,7 +12,6 @@ module Forum
     config.load_defaults 6.0
     #config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :en
-    
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
